@@ -1,4 +1,29 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
+
+
+const UserCardBackground=styled.div`
+width: 100%
+height:100%;
+background: #C9D4C5;`
+
+const ImageHeader = styled.div`
+width: 80px;
+height: 80px;
+border-radius: 50%;
+`
+
+const Userimg = styled.img `
+width: 100px;
+height: 100px;`
+
+const Username = styled.div`
+`
+const Followers =styled.img`
+height: 100px; 
+width: 100px;
+
+`
 
 class UserCard extends Component {
     state = {
@@ -13,11 +38,11 @@ class UserCard extends Component {
     render() {
       return (
         
-        <div>
+        <UserCardBackground>
           
-          <><div className='image-header'>
-            <img src={this.props.user.avatar_url}></img>
-        </div></>
+          <><ImageHeader className='image-header'>
+            <Userimg src={this.props.user.avatar_url}></Userimg>
+        </ImageHeader></>
         <div>{this.props.user.name}</div>
           <div>
               <div>Username</div>
@@ -40,12 +65,12 @@ class UserCard extends Component {
           {this.props.followers.map(follower => (
             <div>
             <><div className='image-header'>
-            <img src={follower.avatar_url}></img>
+            <Followers src={follower.avatar_url}></Followers>
         </div></>
             <div className='follower-item'>{follower.login}</div>
         </div>
           ))}
-        </div>
+        </UserCardBackground>
       );
     }
   }
